@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: vehicles_api_local_docs
+    container_name: vehicles_api_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./vehicles_api:/app/vehicles_api:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
