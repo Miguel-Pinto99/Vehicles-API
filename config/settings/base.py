@@ -83,6 +83,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "vehicles_api.users",
+    "vehicles_api.owners",
+    "vehicles_api.vehicles",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
