@@ -85,6 +85,7 @@ LOCAL_APPS = [
     "vehicles_api.users",
     "vehicles_api.owners",
     "vehicles_api.vehicles",
+    "vehicles_api.specifications",
     "rest_framework",
     "drf_spectacular",
     # "drf_spectacular.swagger_ui",

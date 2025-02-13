@@ -25,8 +25,9 @@ urlpatterns = [
 
     # Your stuff: custom urls includes go here
     path('', RedirectView.as_view(url='/swagger-ui'), name="root"),
-    path('owners/', include('vehicles_api.owners.urls')),
-    path('vehicles/', include('vehicles_api.vehicles.urls')),
+    path('', include('vehicles_api.owners.urls')),
+    path('', include('vehicles_api.vehicles.urls')),
+    path('', include('vehicles_api.specifications.urls')),
     path('schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='swagger-ui'),
 
