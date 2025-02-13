@@ -11,13 +11,13 @@ class SpecificationsListAPIView(APIView):
         specifications = Specification.objects.all()
         serializer = SpecificationSerializer(specifications, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
 class SpecificationsDetailAPIView(APIView):
     def get(self, request, pk):
         try:
             specification = Specification.objects.get(pk=pk)
         except Specification.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-        
+
         serializer = SpecificationSerializer(specification)
         return Response(serializer.data, status=status.HTTP_200_OK)

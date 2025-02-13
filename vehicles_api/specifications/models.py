@@ -1,7 +1,9 @@
 from django.db import models
-from vehicles_api.vehicles.models import Vehicle
 
 class Specification(models.Model):
-    name = models.CharField(max_length=100, help_text="Enter the name of the specification")
-    value = models.CharField(max_length=100, help_text="Enter the value of the specification")
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, help_text="Select the vehicle this specification belongs to")
+    vehicle_plate = models.CharField(max_length=100, help_text="Enter the plate of the vehicle", default="Unknown")
+    brand = models.CharField(max_length=100, help_text="Enter the brand of the vehicle", default="Unknown")
+    model = models.CharField(max_length=100, help_text="Enter the model of the vehicle", default="Unknown")
+    year = models.IntegerField(help_text="Enter the year of the vehicle", default=2000)
+    fuel = models.CharField(max_length=100, help_text="Enter the fuel type of the vehicle", default="Unknown")
+    color = models.CharField(max_length=100, help_text="Enter the color of the vehicle", default="Unknown")
