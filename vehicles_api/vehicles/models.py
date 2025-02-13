@@ -13,25 +13,19 @@ class Vehicle(models.Model):
     type = models.CharField(
         max_length=5,
         choices=CarType.choices,
-        default=CarType.CAR,
+        default=CarType.__empty__,
         help_text=_("The type of the vehicle"),
     )
-    name = models.CharField(
-        max_length=100,
-        help_text=_("The name of the vehicle"),
-    )
-    year = models.IntegerField(
-        help_text=_("The manufacturing year of the vehicle"),
-    )
-    type = models.CharField(
-        _("vehicle type"),
-        max_length=50,
-        choices=CarType,
-        help_text=_("The vehicle type"),
+    plate = models.CharField(
+        max_length=10,
+        unique=True,
+        default='',
+        help_text=_("The plate of the vehicle"),
     )
     owner = models.ForeignKey(
         Owner,
         on_delete=models.CASCADE,
         related_name='vehicles',
         help_text=_("The owner of the vehicle"),
+
     )
