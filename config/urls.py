@@ -24,11 +24,11 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Your stuff: custom urls includes go here
-    path('api/v1/', include('vehicles_api.owners.urls')),
-    path('api/v1/', include('vehicles_api.vehicles.urls')),
-    path('api/v1/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/v1/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('', RedirectView.as_view(url='/api/v1/')),
+    path('', RedirectView.as_view(url='/swagger-ui'), name="root"),
+    path('owners/', include('vehicles_api.owners.urls')),
+    path('vehicles/', include('vehicles_api.vehicles.urls')),
+    path('schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='swagger-ui'),
 
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
