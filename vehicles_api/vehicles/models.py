@@ -21,12 +21,12 @@ class Vehicle(models.Model):
         unique=True,
         default='',
         help_text=_("The plate of the vehicle"),
+        primary_key=True,
     )
     owner = models.OneToOneField(
         Owner,
         on_delete=models.CASCADE,
         related_name='vehicles',
         help_text=_("The owner of the vehicle"),
-        primary_key=True,
 
     )
