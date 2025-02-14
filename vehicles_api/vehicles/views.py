@@ -19,8 +19,8 @@ class VehicleListAPIView(APIView):
     def post(self, request):
         serializer = VehicleSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            SpecsLogic(serializer.data['plate'])
+            vehicle = serializer.save()
+            SpecsLogic(vehicle)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -47,7 +47,8 @@ class VehicleDetailAPIView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         serializer = VehicleSerializer(Vehicle, data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            vehicle = serializer.save()
+            SpecsLogic(vehicle)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
