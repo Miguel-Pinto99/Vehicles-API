@@ -13,7 +13,7 @@ def SpecsLogic(plate: str) -> None:
     if specs:
         vehicle_specs = ParseSpecs(specs)
         SaveSpecs(vehicle_specs)
-    
+
 def GetSpecs(plate: str) -> Optional[Dict[str, Any]]:
     client = HTTPClient(API.APK.value)
     response = client.get(f"kenteken={plate}")
