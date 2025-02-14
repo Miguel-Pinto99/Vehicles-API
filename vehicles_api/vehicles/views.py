@@ -20,7 +20,7 @@ class VehicleListAPIView(APIView):
         serializer = VehicleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            SpecsLogic(serializer.data)
+            SpecsLogic(serializer.data['plate'])
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

@@ -27,6 +27,6 @@ def ParseSpecs(specs: Dict[str, Any]) -> Specification:
         plate=specs.get("kenteken"),
         brand=specs.get("merk"),
         model=specs.get("handelsbenaming"),
-        year=specs.get("datum_eerste_toelating"),
+        first_registry=specs.get("datum_eerste_toelating"),
         fuel=specs.get("brandstof_omschrijving")
     )

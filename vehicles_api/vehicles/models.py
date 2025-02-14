@@ -13,7 +13,7 @@ class Vehicle(models.Model):
     type = models.CharField(
         max_length=5,
         choices=CarType.choices,
-        default=CarType.__empty__,
+        default=CarType.CAR,
         help_text=_("The type of the vehicle"),
     )
     plate = models.CharField(
