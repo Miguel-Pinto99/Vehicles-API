@@ -10,14 +10,17 @@ class API(Enum):
 
 def SpecsLogic(vehicle: Vehicle) -> None:
     specs = GetSpecs(vehicle.plate)
-    if not 'error' in specs:
+    if not 'error' in specs and specs:
+        specs = specs[0]
         vehicle_specs = ParseSpecs(vehicle,specs)
         SaveSpecs(vehicle_specs)
+    else:
+        ValueError("No specs found")
 
 def GetSpecs(plate: str) -> Optional[Dict[str, Any]]:
     client = HTTPClient(API.APK.value)
     response = client.get(f"kenteken={plate}")
-    return response[0]
+    return response
 
 def SaveSpecs(vehicle_specs: Specification) -> None:
     vehicle_specs.save()
