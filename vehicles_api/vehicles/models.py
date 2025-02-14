@@ -22,10 +22,11 @@ class Vehicle(models.Model):
         default='',
         help_text=_("The plate of the vehicle"),
     )
-    owner = models.ForeignKey(
+    owner = models.OneToOneField(
         Owner,
         on_delete=models.CASCADE,
         related_name='vehicles',
         help_text=_("The owner of the vehicle"),
+        primary_key=True,
 
     )

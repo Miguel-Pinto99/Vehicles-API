@@ -2,7 +2,7 @@ from django.db import models
 from ..vehicles.models import Vehicle
 
 class Specification(models.Model):
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, to_field='plate', related_name='specifications')
+    vehicle = models.OneToOneField(Vehicle, on_delete=models.CASCADE, to_field='plate', related_name='specifications', primary_key=True)
     brand = models.CharField(max_length=100, help_text="Enter the brand of the vehicle", default="Unknown")
     model = models.CharField(max_length=100, help_text="Enter the model of the vehicle", default="Unknown", null=True, blank=True)
     first_registry = models.IntegerField(help_text="Enter the year of the vehicle", default=2000, null=True, blank=True)
