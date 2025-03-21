@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Create your views here.
-=======
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -26,39 +23,3 @@ class VehicleListAPIView(APIView):
             SpecsLogic(vehicle)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-class VehicleDetailAPIView(APIView):
-    def get_object(self, pk):
-        try:
-            return Vehicle.objects.get(pk=pk)
-        except Vehicle.DoesNotExist:
-            return None
-
-    def get(self, request, pk):
-        Vehicle = self.get_object(pk)
-        if Vehicle is None:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        serializer = VehicleSerializer(Vehicle)
-        return Response(serializer.data)
-
-    @extend_schema(request=VehicleSerializer,
-                         responses={201: VehicleSerializer(),
-                                    400: 'Bad Request'})
-    def put(self, request, pk):
-        Vehicle = self.get_object(pk)
-        if Vehicle is None:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        serializer = VehicleSerializer(Vehicle, data=request.data)
-        if serializer.is_valid():
-            vehicle = serializer.save()
-            SpecsLogic(vehicle)
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk):
-        Vehicle = self.get_object(pk)
-        if Vehicle is None:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        Vehicle.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
->>>>>>> 88d1617dedfacab29f2f56e0a5b4f644b733cc08

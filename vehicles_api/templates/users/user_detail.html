@@ -11,13 +11,11 @@
     {{ object.username }}
 
 
->>>>>>> 88d1617dedfacab29f2f56e0a5b4f644b733cc08
 {% endblock title %}
 {% block content %}
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-<<<<<<< HEAD
         <h2>{{ object.username }}</h2>
         {% if object.name %}<p>{{ object.name }}</p>{% endif %}
 =======
@@ -44,7 +42,6 @@
            href="{% url 'mfa_index' %}"
            role="button">MFA</a>
         <!-- Your Stuff: Custom user template urls -->
->>>>>>> 88d1617dedfacab29f2f56e0a5b4f644b733cc08
       </div>
     </div>
     {% if object == request.user %}

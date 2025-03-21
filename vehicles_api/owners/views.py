@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 # Create your views here.
-=======
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -59,4 +58,3 @@ class OwnerDetailAPIView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
         owner.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
->>>>>>> 88d1617dedfacab29f2f56e0a5b4f644b733cc08
