@@ -1,13 +1,14 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
 from vehicles_api.owners.models import Owner
 
-class Vehicle(models.Model):
 
+class Vehicle(models.Model):
     class CarType(models.TextChoices):
-        CAR = 'CAR', _('Car')
-        MOTOR = 'MOTOR', _('Motor')
-        TRUCK = 'TRUCK', _('Truck')
+        CAR = "CAR", _("Car")
+        MOTOR = "MOTOR", _("Motor")
+        TRUCK = "TRUCK", _("Truck")
         __empty__ = _("Other")
 
     type = models.CharField(
@@ -32,6 +33,6 @@ class Vehicle(models.Model):
     owner = models.ForeignKey(
         Owner,
         on_delete=models.CASCADE,
-        related_name='vehicles',
+        related_name="vehicles",
         help_text=_("The owner of the vehicle"),
     )
