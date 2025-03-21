@@ -85,6 +85,10 @@ LOCAL_APPS = [
     "vehicles_api.users",
     "vehicles_api.owners",
     "vehicles_api.vehicles",
+    "vehicles_api.specifications",
+    "rest_framework",
+    "drf_spectacular",
+    # "drf_spectacular.swagger_ui",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -324,3 +328,13 @@ SOCIALACCOUNT_FORMS = {"signup": "vehicles_api.users.forms.UserSocialSignupForm"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.AllowAny",  # Require authentication by default
+    ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}

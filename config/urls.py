@@ -7,6 +7,8 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -20,8 +22,15 @@ urlpatterns = [
     # User management
     path("users/", include("vehicles_api.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+
     # Your stuff: custom urls includes go here
-    # ...
+    path('', RedirectView.as_view(url='/swagger-ui'), name="root"),
+    path('', include('vehicles_api.owners.urls')),
+    path('', include('vehicles_api.vehicles.urls')),
+    path('', include('vehicles_api.specifications.urls')),
+    path('schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='swagger-ui'),
+
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
